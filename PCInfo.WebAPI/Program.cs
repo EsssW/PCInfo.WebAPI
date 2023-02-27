@@ -17,12 +17,12 @@ builder.Services.AddDbContext<DataContext>(opt =>
     opt.UseNpgsql(connString);
 });
 
-//builder.Services.AddCors();
+builder.Services.AddCors();
 
-builder.Services.AddCors(p => p.AddPolicy("corspolicy", builder =>
-{
-    builder.WithOrigins("https://localhost:4200").AllowAnyMethod().AllowAnyHeader();
-}));
+//builder.Services.AddCors(p => p.AddPolicy("corspolicy", builder =>
+//{
+//    builder.WithOrigins("https://localhost:4200").AllowAnyMethod().AllowAnyHeader();
+//}));
 
 var app = builder.Build();
 
@@ -33,16 +33,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("corspolicy");
-
-//app.UseCors(
-//    options =>
-//        options
-//            .AllowAnyOrigin()
-//            .AllowAnyMethod()
-//            .AllowAnyHeader()
-//            .WithExposedHeaders(HeaderNames.ContentDisposition)
-//);
+app.UseCors(
+    builder => builder.AllowAnyOrigin()
+                      .AllowAnyHeader()
+                      .AllowAnyMethod()
+);
 
 app.UseHttpsRedirection();
 

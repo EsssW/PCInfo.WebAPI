@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PCInfo.WebAPI.Data;
+using System.Globalization;
 
 namespace _pcInf.WebAPI.Controllers
 {
@@ -16,8 +17,48 @@ namespace _pcInf.WebAPI.Controllers
             _dbContext = dbContext;
         }
 
+        [HttpGet]
+        public async Task<List<pcInfoGetResponse>> Get()
+        {
+            var response = _dbContext.pcInfos
+                .Select(x => new pcInfoGetResponse()
+                {
+                    CPUKernelCount = x.CPUKernelCount,
+                    CPUManufacturerer = x.CPUManufacturerer,
+                    CPUModel = x.CPUModel,
+                    CPUName = x.CPUName,
+                    CPUNMaxClockSpeed = x.CPUNMaxClockSpeed,
+                    DriveCount = x.DriveCount,
+                    HDDName = x.HDDName,
+                    HDDSize = x.HDDSize,
+                    HResol = x.HResol,
+                    OSVersion = x.OSVersion,
+                    PCIPV4 = x.PCIPV4,
+                    PCName = x.PCName,
+                    RAMCount = x.RAMCount,
+                    ScreenCount = x.ScreenCount,
+                    SystemBitRate = x.SystemBitRate,
+                    SystemCatalogPath = x.SystemCatalogPath,
+                    TotalRAM = x.TotalRAM,
+                    VideoCardMemoryAmount = x.VideoCardMemoryAmount,
+                    VideoCardName = x.VideoCardName,
+                    WResol = x.WResol,
+                    DriveInfos = x.MyDriveInfos!.Select(d => new MyDriveInfoDTO
+                    {
+                        AvailableFreeSpace = d.AvailableFreeSpace,
+                        DriveFormat = d.DriveFormat,
+                        Name = d.Name,
+                        TotalSize = d.TotalSize,
+                    }).ToList(),
+
+                }).ToList();
+
+
+            return response;
+        }
+
         [HttpPost("Post")]
-        public async Task Post(MyPCInfoDTO _pcInf)
+        public async Task<PutResponse> Post(MyPCInfoDTO _pcInf)
         {
             //var isPCUnique = _dbContext.pcInfos
             //    .All(x => x.PCIPV4 == _pcInf.PCIPV4 && _pcInf.PCName == x.PCName);
@@ -47,7 +88,7 @@ namespace _pcInf.WebAPI.Controllers
             my_pcInf.VideoCardMemoryAmount = _pcInf.VideoCardMemoryAmount;
             my_pcInf.HDDName = _pcInf.HDDName;
             my_pcInf.HDDSize = _pcInf.HDDSize;
-            
+
 
             await _dbContext.AddAsync(my_pcInf);
 
@@ -65,8 +106,10 @@ namespace _pcInf.WebAPI.Controllers
 
             await _dbContext.SaveChangesAsync();
 
-           
+            return new PutResponse()
+            {
+                Message = my_pcInf.PCIPV4 + " Complite"
+            };
         }
-
     }
 }
