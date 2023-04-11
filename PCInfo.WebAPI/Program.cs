@@ -14,15 +14,12 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<DataContext>(opt =>
 {
-    opt.UseNpgsql(connString);
+    opt.UseSqlite(connString);
 });
 
 //builder.Services.AddCors();
 
-builder.Services.AddCors(p => p.AddPolicy("corspolicy", builder =>
-{
-    builder.WithOrigins("https://localhost:4200").AllowAnyMethod().AllowAnyHeader();
-}));
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -33,16 +30,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors("corspolicy");
-
-//app.UseCors(
-//    options =>
-//        options
-//            .AllowAnyOrigin()
-//            .AllowAnyMethod()
-//            .AllowAnyHeader()
-//            .WithExposedHeaders(HeaderNames.ContentDisposition)
-//);
+app.UseCors(options => options
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true)
+    .AllowCredentials()
+);
 
 app.UseHttpsRedirection();
 

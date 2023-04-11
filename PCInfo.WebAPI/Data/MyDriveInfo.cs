@@ -4,10 +4,10 @@
     {
         public int Id { get; set; }
 
-        public string? Name { get; set; }
-        public string? DriveFormat { get; set; }
-        public string? TotalSize { get; set; }
-        public string? AvailableFreeSpace { get; set; }
+        public string? Name { get; set; } // [Toshiba, A-Data, Samsung, Patriot]
+        public string? DriveFormat { get; set; } // 
+        public int? TotalSize { get; set; } // [512, 1024, 1536, 2048]
+        public int? AvailableFreeSpace { get; set; } // rand(100, TotalSize)
 
 
         public int? MyPCInfoId { get; set; }

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mukht\\source\\repos\\PCInfo.WebAPI\\PCInfo.WebAPI\\PCInfo.WebAPI.csproj": {}
+    "C:\\Education\\Monitoring\\PCInfo.WebAPI\\PCInfo.WebAPI\\PCInfo.WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mukht\\source\\repos\\PCInfo.WebAPI\\PCInfo.WebAPI\\PCInfo.WebAPI.csproj": {
+    "C:\\Education\\Monitoring\\PCInfo.WebAPI\\PCInfo.WebAPI\\PCInfo.WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mukht\\source\\repos\\PCInfo.WebAPI\\PCInfo.WebAPI\\PCInfo.WebAPI.csproj",
+        "projectUniqueName": "C:\\Education\\Monitoring\\PCInfo.WebAPI\\PCInfo.WebAPI\\PCInfo.WebAPI.csproj",
         "projectName": "PCInfo.WebAPI",
-        "projectPath": "C:\\Users\\mukht\\source\\repos\\PCInfo.WebAPI\\PCInfo.WebAPI\\PCInfo.WebAPI.csproj",
-        "packagesPath": "C:\\Users\\mukht\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mukht\\source\\repos\\PCInfo.WebAPI\\PCInfo.WebAPI\\obj\\",
+        "projectPath": "C:\\Education\\Monitoring\\PCInfo.WebAPI\\PCInfo.WebAPI\\PCInfo.WebAPI.csproj",
+        "packagesPath": "C:\\Users\\barie\\.nuget\\packages\\",
+        "outputPath": "C:\\Education\\Monitoring\\PCInfo.WebAPI\\PCInfo.WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\mukht\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\barie\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -40,17 +38,29 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Accord.MachineLearning": {
+              "target": "Package",
+              "version": "[3.8.2-alpha, )"
+            },
+            "Bogus": {
+              "target": "Package",
+              "version": "[34.0.2, )"
+            },
             "Microsoft.AspNet.WebApi.Cors": {
               "target": "Package",
               "version": "[5.2.9, )"
             },
-            "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.3, )"
             },
-            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[7.0.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.3, )"
             },
@@ -70,6 +80,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.12, 6.0.12]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.12, 6.0.12]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -78,7 +106,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
